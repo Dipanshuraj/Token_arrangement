@@ -10,13 +10,15 @@ contract Storage {
     mapping (address => string[]) map;
    
     function Deposite (uint256 noOfTokens) public returns (string memory) {
-        if(Totalsupply() + noOfTokens <= 1500 && noOfTokens!=0){
+        if(Totalsupply() + noOfTokens <= 1500 && noOfTokens > 0){
             uint256 tokenLeft=noOfTokens;
             
 
              if((500-slabs[4])>0){
                  if((500-slabs[4])>=tokenLeft){
                      slabs[4]+=tokenLeft;
+                     tokenLeft=0;
+
                      map[msg.sender].push("SLAB 5");
                  }else{
                      tokenLeft-=(500-slabs[4]);
@@ -26,9 +28,10 @@ contract Storage {
                  }
                  
              }
-                          if((400-slabs[3])>0 && tokenLeft!=0){
+                          if((400-slabs[3])>0 && tokenLeft>0){
                  if((400-slabs[3])>=tokenLeft){
                      slabs[3]+=tokenLeft;
+                     tokenLeft=0;
                      map[msg.sender].push("SLAB 4");
                  }else{
                      tokenLeft-=(400-slabs[3]);
@@ -38,9 +41,10 @@ contract Storage {
                  }
                  
              }
-                          if((300-slabs[2])>0 && tokenLeft!=0){
+                          if((300-slabs[2])>0 && tokenLeft>0){
                  if((300-slabs[2])>=tokenLeft){
                      slabs[2]+=tokenLeft;
+                     tokenLeft=0;
                      map[msg.sender].push("SLAB 3");
                  }else{
                      tokenLeft-=(300-slabs[2]);
@@ -50,9 +54,10 @@ contract Storage {
                  }
                  
              }
-                                       if((200-slabs[1])>0 && tokenLeft!=0){
+                                       if((200-slabs[1])>0 && tokenLeft>0){
                  if((200-slabs[1])>=tokenLeft){
                      slabs[1]+=tokenLeft;
+                     tokenLeft=0;
                      map[msg.sender].push("SLAB 2");
                  }else{
                      tokenLeft-=(200-slabs[1]);
@@ -62,9 +67,10 @@ contract Storage {
                  }
                  
              }
-                                       if((100-slabs[0])>0 && tokenLeft!=0){
+                                       if((100-slabs[0])>0 && tokenLeft>0){
                  if((100-slabs[0])>=tokenLeft){
                      slabs[0]+=tokenLeft;
+                     tokenLeft=0;
                      map[msg.sender].push("SLAB 1");
                  }else{
                      tokenLeft-=(100-slabs[0]);
